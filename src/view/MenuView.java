@@ -1,6 +1,6 @@
 package view;
 
-public class Menu {
+public class MenuView {
     public static void printMenu(String ...menu) {
         System.out.println("===================== Menu =====================");
         for (int i = 0; i < menu.length; i++) {

@@ -9,6 +9,11 @@ public class Wallet {
         this.sold = 0;
     }
 
+    public Wallet(String owner, double sold) {
+        this.owner = owner;
+        this.sold = sold;
+    }
+
     public String getOwner() {
         return owner;
     }

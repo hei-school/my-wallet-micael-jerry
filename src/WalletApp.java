@@ -1,6 +1,9 @@
+import model.History;
+import model.OperationType;
 import model.Wallet;
 import service.WalletService;
-import view.Menu;
+import view.HistoryView;
+import view.MenuView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,26 +13,29 @@ public class WalletApp {
     public static void run () {
         Scanner sc = new Scanner(System.in);
         Wallet wallet = new Wallet();
-        List<String> transaction = new ArrayList<>(); // TODO: transaction history
+        List<History> historyList = new ArrayList<>();
 
         System.out.println("Welcome");
 
         boolean conditionRunning = true;
         while (conditionRunning) {
-            Menu.printMenu("Status", "Deposit", "Withdraw", "History", "Exit");
+            MenuView.printMenu("Status", "Deposit", "Withdraw", "History", "Exit");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
                     WalletService.printWallet(wallet);
+                    historyList.add(new History(OperationType.STATUS, new Wallet(wallet.getOwner(), wallet.getSold())));
                     break;
                 case 2:
                     WalletService.deposit(wallet, sc);
+                    historyList.add(new History(OperationType.DEPOSIT, new Wallet(wallet.getOwner(), wallet.getSold())));
                     break;
                 case 3:
                     WalletService.withdrawal(wallet, sc);
+                    historyList.add(new History(OperationType.WITHDRAW, new Wallet(wallet.getOwner(), wallet.getSold())));
                     break;
                 case 4:
-                    System.out.println("Not implemented");
+                    HistoryView.printHistory(historyList);
                     break;
                 case 5:
                     conditionRunning = false;
