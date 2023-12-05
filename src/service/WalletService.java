@@ -9,17 +9,29 @@ public class WalletService {
         System.out.println("Wallet: " + "\n  owner: " + wallet.getOwner() + "\n  sold: " + wallet.getSold());
     }
 
-    public static void updateWallet (Wallet wallet, Scanner scanner) {
+    public static void updateOwner (Wallet wallet, Scanner sc) {
         System.out.println("Your name: ");
-        wallet.setOwner(scanner.nextLine());
-        System.out.println("Sold: ");
-        wallet.setSold(scanner.nextDouble());
-        System.out.println("Update successfully");
+        wallet.setOwner(sc.next());
+        System.out.println("Name changed");
     }
 
-    public static void withdrawal (Wallet wallet, Scanner scanner) {
+    public static void updateSold (Wallet wallet, Scanner sc) {
+        System.out.println("Sold: ");
+        if (sc.hasNextDouble()) {
+            wallet.setSold(sc.nextDouble());
+            System.out.println("Sold updated");
+        } else {
+            sc.next();
+        }
+    }
+
+    public static void withdrawal (Wallet wallet, Scanner sc) {
         System.out.println("Amount to withdraw: ");
-        double amount = scanner.nextInt();
+        while (!sc.hasNextInt()) {
+            System.out.println("Invalid Input");
+            sc.next();
+        }
+        double amount = sc.nextInt();
         if (amount > wallet.getSold()) {
             System.out.println("Insufficient balance");
         }
