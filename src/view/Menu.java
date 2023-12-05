@@ -6,6 +6,7 @@ public class Menu {
                 ===================== Menu =====================
                 1. Status
                 2. Exit
+                3. Update
                 """);
     }
 }
