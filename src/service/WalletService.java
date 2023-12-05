@@ -9,19 +9,14 @@ public class WalletService {
         System.out.println("Wallet: " + "\n  owner: " + wallet.getOwner() + "\n  sold: " + wallet.getSold());
     }
 
-    public static void updateOwner (Wallet wallet, Scanner sc) {
-        System.out.println("Your name: ");
-        wallet.setOwner(sc.next());
-        System.out.println("Name changed");
-    }
-
-    public static void updateSold (Wallet wallet, Scanner sc) {
-        System.out.println("Sold: ");
+    public static void deposit(Wallet wallet, Scanner sc) {
+        System.out.println("Money to deposit: ");
         if (sc.hasNextDouble()) {
-            wallet.setSold(sc.nextDouble());
-            System.out.println("Sold updated");
+            wallet.setSold(wallet.getSold() + sc.nextDouble());
+            System.out.println("Deposit successfully");
         } else {
             sc.next();
+            System.out.println("Invalid Input - retry");
         }
     }
 
