@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class WalletService {
     public static void printWallet (Wallet wallet) {
-        System.out.println("Wallet: " + "\n  owner: " + wallet.getOwner() + "\n  sold: " + wallet.getSold());
+        System.out.println("Wallet: " + "\n  sold: " + wallet.getSold());
     }
 
     public static void deposit(Wallet wallet, Scanner sc) {

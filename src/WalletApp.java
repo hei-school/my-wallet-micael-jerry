@@ -20,19 +20,23 @@ public class WalletApp {
         boolean conditionRunning = true;
         while (conditionRunning) {
             MenuView.printMenu("Status", "Deposit", "Withdraw", "History", "Exit");
+            while (!sc.hasNextInt()) {
+                System.out.println("Please enter a valid number");
+                sc.next();
+            }
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
                     WalletService.printWallet(wallet);
-                    historyList.add(new History(OperationType.STATUS, new Wallet(wallet.getOwner(), wallet.getSold())));
+                    historyList.add(new History(OperationType.STATUS, new Wallet(wallet.getSold())));
                     break;
                 case 2:
                     WalletService.deposit(wallet, sc);
-                    historyList.add(new History(OperationType.DEPOSIT, new Wallet(wallet.getOwner(), wallet.getSold())));
+                    historyList.add(new History(OperationType.DEPOSIT, new Wallet(wallet.getSold())));
                     break;
                 case 3:
                     WalletService.withdrawal(wallet, sc);
-                    historyList.add(new History(OperationType.WITHDRAW, new Wallet(wallet.getOwner(), wallet.getSold())));
+                    historyList.add(new History(OperationType.WITHDRAW, new Wallet(wallet.getSold())));
                     break;
                 case 4:
                     HistoryView.printHistory(historyList);
