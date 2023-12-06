@@ -1,4 +1,4 @@
-class Wallet {
+export class Wallet {
   sold: number;
 
   constructor (sold: number) {
@@ -13,5 +13,3 @@ class Wallet {
     this.sold = sold;
   }
 }
-
-module.exports.Wallet = Wallet;

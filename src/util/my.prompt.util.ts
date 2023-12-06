@@ -1,4 +1,4 @@
-const readline = require("readline")
+const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -13,10 +13,8 @@ const scanner = (question: string): Promise<unknown> => {
   });
 }
 
-const myPrompt = async (question: string): Promise<unknown> => {
+export const myPrompt = async (question: string): Promise<unknown> => {
   let res: Promise<unknown> = scanner(question);
   rl.close();
   return res;
 }
-
-module.exports.myPrompt = myPrompt;

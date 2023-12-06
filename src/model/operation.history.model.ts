@@ -1,4 +1,7 @@
-class OperationHistory {
+import { OperationType } from "./operation.type";
+import { Wallet } from "./wallet.model";
+
+export class OperationHistory {
   timestamp: Date;
   operation: OperationType;
   wallet: Wallet;
@@ -33,5 +36,3 @@ class OperationHistory {
     this.wallet = wallet;
   }
 }
-
-module.exports.OperationHistory = OperationHistory;
