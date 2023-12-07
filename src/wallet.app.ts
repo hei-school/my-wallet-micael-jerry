@@ -3,8 +3,9 @@ import { OperationType } from "./model/operation.type";
 import { Wallet } from "./model/wallet.model";
 import { deposit, printWallet, withdrawal } from "./service/wallet.service";
 import { closeMyPrompt, myPrompt } from "./util/my.prompt.util";
-import { printHistory } from "./view/HistoryView";
-import { printMenu } from "./view/MenuView";
+import { bar } from "./view/bar.view";
+import { printHistory } from "./view/history.view";
+import { printMenu } from "./view/menu.view";
 
 export const run = async () => {
   let wallet: Wallet = new Wallet(0);
@@ -22,6 +23,7 @@ export const run = async () => {
     }
     switch (choice) {
       case 1:
+        bar("Status")
         printWallet(wallet);
         historyList.push(
           new OperationHistory(
@@ -31,6 +33,7 @@ export const run = async () => {
         );
         break;
       case 2:
+        bar("Deposit")
         await deposit(wallet)
           .then((res) => {
             console.log(res);
@@ -44,6 +47,7 @@ export const run = async () => {
           .catch((err) => console.log(err.message));
         break;
       case 3:
+        bar("Withdraw");
         await withdrawal(wallet)
           .then((res) => {
             console.log(res);

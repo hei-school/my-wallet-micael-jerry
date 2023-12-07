@@ -1,5 +1,5 @@
 export enum OperationType {
-  STATUS,
-  DEPOSIT,
-  WITHDRAW
+  STATUS = "STATUS",
+  DEPOSIT = "DEPOSIT",
+  WITHDRAW = "WITHDRAW"
 }
