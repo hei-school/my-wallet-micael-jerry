@@ -2,11 +2,11 @@ import { OperationHistory } from "./model/operation.history.model";
 import { OperationType } from "./model/operation.type";
 import { Wallet } from "./model/wallet.model";
 import { deposit, printWallet, withdrawal } from "./service/wallet.service";
-import { myPrompt } from "./util/my.prompt.util";
+import { closeMyPrompt, myPrompt } from "./util/my.prompt.util";
 import { printHistory } from "./view/HistoryView";
 import { printMenu } from "./view/MenuView";
 
-export const run = (): void => {
+export const run = async () => {
   let wallet: Wallet = new Wallet(0);
   let historyList: OperationHistory[] = [];
 
@@ -15,9 +15,10 @@ export const run = (): void => {
   let conditionRunning: boolean = true;
   while (conditionRunning) {
     printMenu("Status", "Deposit", "Withdraw", "History", "Exit");
-    let choice: number = Number(myPrompt("Choice: "));
+    let input = await myPrompt("Choice: ");
+    let choice: number = Number(input);
     while (!choice) {
-      choice = Number(myPrompt("Please enter a valid number"));
+      input = await myPrompt("Please enter a valid number");
     }
     switch (choice) {
       case 1:
@@ -30,28 +31,37 @@ export const run = (): void => {
         );
         break;
       case 2:
-        deposit(wallet);
-        historyList.push(
-          new OperationHistory(
-            OperationType.DEPOSIT,
-            new Wallet(wallet.getSold())
-          )
-        );
+        await deposit(wallet)
+          .then((res) => {
+            console.log(res);
+            historyList.push(
+              new OperationHistory(
+                OperationType.DEPOSIT,
+                new Wallet(wallet.getSold())
+              )
+            );
+          })
+          .catch((err) => console.log(err.message));
         break;
       case 3:
-        withdrawal(wallet);
-        historyList.push(
-          new OperationHistory(
-            OperationType.WITHDRAW,
-            new Wallet(wallet.getSold())
-          )
-        );
+        await withdrawal(wallet)
+          .then((res) => {
+            console.log(res);
+            historyList.push(
+              new OperationHistory(
+                OperationType.WITHDRAW,
+                new Wallet(wallet.getSold())
+              )
+            );
+          })
+          .catch((err) => console.log(err.message));
         break;
       case 4:
         printHistory(historyList);
         break;
       case 5:
         conditionRunning = false;
+        closeMyPrompt();
         console.log("Bye");
         break;
       default:

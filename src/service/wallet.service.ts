@@ -5,27 +5,27 @@ export const printWallet = (wallet: Wallet): void => {
   console.log(`Wallet: \n - sold: ${wallet.getSold()}`);
 }
 
-export const deposit = (wallet: Wallet): void => {
-  const input = myPrompt("Money to deposit: ");
+export const deposit = async (wallet: Wallet) => {
+  const input = await myPrompt("Money to deposit: ");
   if (!isNaN(Number(input))) {
     wallet.setSold(wallet.getSold() + Number(input));
-    console.log("Deposit successfully");
+    return Promise.resolve("Deposit successfully");
   } else {
-    console.log("Invalid Input - retry");
+    return Promise.reject(new Error("Invalid Input - retry"));
   }
 }
 
-export const withdrawal = (wallet: Wallet): void => {
-  const input = myPrompt("Amount to withdraw: ");
+export const withdrawal = async (wallet: Wallet) => {
+  const input = await myPrompt("Amount to withdraw: ");
   if (!isNaN(Number(input))) {
     const amount = Number(input);
     if (amount > wallet.getSold()) {
-      console.log("Insufficient balance");
+      return Promise.reject(new Error("Insufficient balance"));
     } else {
       wallet.setSold(wallet.getSold() - amount);
-      console.log("Withdrawal successfully");
+      return Promise.resolve("Withdrawal successfully");
     }
   } else {
-    console.log("Invalid Input - retry");
+    return Promise.reject(new Error("Invalid Input - retry"));
   }
 }

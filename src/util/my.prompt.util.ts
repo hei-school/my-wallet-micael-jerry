@@ -5,7 +5,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const scanner = (question: string): Promise<unknown> => {
+const scanner = async (question: string): Promise<unknown> => {
   return new Promise((resolve) => {
     rl.question(question, (response: string) => {
       resolve(response);
@@ -14,7 +14,10 @@ const scanner = (question: string): Promise<unknown> => {
 }
 
 export const myPrompt = async (question: string): Promise<unknown> => {
-  let res: Promise<unknown> = scanner(question);
-  rl.close();
+  let res = await scanner(question);
   return res;
+}
+
+export const closeMyPrompt = () => {
+  rl.close();
 }
