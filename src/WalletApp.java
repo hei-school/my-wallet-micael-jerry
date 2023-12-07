@@ -1,7 +1,9 @@
 import model.History;
+import model.Note;
 import model.OperationType;
 import model.Wallet;
 import service.WalletService;
+import view.BarView;
 import view.HistoryView;
 import view.MenuView;
 
@@ -14,12 +16,14 @@ public class WalletApp {
         Scanner sc = new Scanner(System.in);
         Wallet wallet = new Wallet();
         List<History> historyList = new ArrayList<>();
+        List<Note> noteList = new ArrayList<>();
 
         System.out.println("Welcome");
 
         boolean conditionRunning = true;
         while (conditionRunning) {
-            MenuView.printMenu("Status", "Deposit", "Withdraw", "History", "Exit");
+            BarView.bar("Menu");
+            MenuView.printMenu("Status", "Deposit", "Withdraw", "History", "Note", "Exit");
             while (!sc.hasNextInt()) {
                 System.out.println("Please enter a valid number");
                 sc.next();
@@ -42,6 +46,9 @@ public class WalletApp {
                     HistoryView.printHistory(historyList);
                     break;
                 case 5:
+                    NoteApp.run(noteList, sc);
+                    break;
+                case 6:
                     conditionRunning = false;
                     System.out.println("Bye");
                     break;
