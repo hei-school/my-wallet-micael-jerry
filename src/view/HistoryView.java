@@ -6,13 +6,14 @@ import java.util.List;
 
 public class HistoryView {
     public static void printHistory(List<History> historyList) {
-        System.out.println("===================== History =====================");
+        BarView.bar("History");
         if (historyList.isEmpty()) {
             System.out.println("Empty history");
             return;
         }
-        for (History history : historyList) {
-            System.out.println(history.getTimestamp().toString() + " - " + history.getOperation() + " - " + "sold: " + history.getWallet().getSold());
+        for (int i = 0; i < historyList.size(); i++) {
+            History history = historyList.get(i);
+            System.out.println((i + 1) + ". " + history.getTimestamp().toString() + " - " + history.getOperation() + " - " + "sold: " + history.getWallet().getSold());
         }
     }
 }
