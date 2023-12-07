@@ -5,10 +5,10 @@ require_relative 'wallet'
 class History
   attr_reader :timestamp, :operation, :wallet
 
-  def initialize(operation, wallet)
+  def initialize(operation, wallet_sold)
     @timestamp = DateTime.now
     @operation = operation
-    @wallet = wallet
+    @wallet = Wallet.new(wallet_sold)
   end
 
   def operation=(new_operation)

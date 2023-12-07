@@ -1,6 +1,6 @@
 class Wallet
-  def initialize
-    @sold = 0
+  def initialize(sold = 0)
+    @sold = sold
   end
 
   def sold

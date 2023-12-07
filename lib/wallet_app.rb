@@ -23,13 +23,13 @@ def run
     when 1
       bar('Status')
       print_wallet(wallet)
-      history_list << History.new(OperationType::STATUS, wallet)
+      history_list << History.new(OperationType::STATUS, wallet.sold)
     when 2
       bar('Deposit')
       res = deposit(wallet)
       if res.is_success
         puts res.message
-        history_list << History.new(OperationType::DEPOSIT, wallet)
+        history_list << History.new(OperationType::DEPOSIT, wallet.sold)
       else
         puts res.message
       end
@@ -38,7 +38,7 @@ def run
       res = withdrawal(wallet)
       if res.is_success
         puts res.message
-        history_list << History.new(OperationType::WITHDRAW, wallet)
+        history_list << History.new(OperationType::WITHDRAW, wallet.sold)
       else
         puts res.message
       end
