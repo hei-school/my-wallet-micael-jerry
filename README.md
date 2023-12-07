@@ -1,12 +1,12 @@
-# Project Wallet in Ruby
+# Wallet project in TypeScript
 
-This project is a simple portfolio management application built in Ruby.
+This project is a simple wallet management application in TypeScript.
 
 ## Instructions for starting the project
 
 ### Prerequisites
 
-Make sure you have Ruby installed on your machine. You can download Ruby from [the official Ruby website](https://www.ruby-lang.org/fr/documentation/installation/).
+Make sure you have Node.js and npm installed on your machine. You can download Node.js from [the official Node.js website](https://nodejs.org/).
 
 ### Steps to get started
 
