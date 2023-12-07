@@ -15,7 +15,7 @@ public class NoteView {
         for (int i = 0; i < noteList.size(); i++) {
             BarView.bar("NOTE " + (i + 1));
             Note note = noteList.get(i);
-            System.out.println(note.getTimestamp().toString() + "     value: " + note.getValue());
+            System.out.println("id: " + (i + 1) + "     value: " + note.getValue()  + " date: " + note.getTimestamp().toString());
         }
     }
 }
