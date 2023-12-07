@@ -1,8 +1,9 @@
 from src.model.history import History
+from src.view.bar_view import bar
 
 
-def print_history (history_list: list[History]):
-    print("===================== History =====================")
+def print_history(history_list: list[History]):
+    bar("History")
     if len(history_list) == 0:
         print("Empty history")
         return

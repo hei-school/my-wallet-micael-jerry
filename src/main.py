@@ -1,5 +1,8 @@
-def hello():
-    print("HELLO")
+from src.wallet_app import run
 
 
-hello()
+def main():
+    run()
+
+
+main()
