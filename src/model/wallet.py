@@ -1,6 +1,6 @@
 class Wallet:
-    def __init__(self):
-        self.__sold: int = 0
+    def __init__(self, sold: int = 0):
+        self.__sold: int = sold
 
     @property
     def sold(self):

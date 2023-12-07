@@ -10,7 +10,7 @@ def deposit(wallet: Wallet) -> Result:
     input_str: str = input("Money to deposit: ")
     try:
         input_int: int = int(input_str)
-        wallet.sold = input_int
+        wallet.sold = wallet.sold + input_int
         return Result(True, "Deposit successfully", wallet)
     except ValueError:
         return Result(False, "Invalid Input - retry", input_str)

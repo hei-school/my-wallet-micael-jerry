@@ -23,13 +23,13 @@ def run():
         if choice == 1:
             bar("Status")
             print_wallet(wallet)
-            history_list.append(History(OperationType.STATUS, wallet))
+            history_list.append(History(OperationType.STATUS, wallet.sold))
         elif choice == 2:
             bar("Deposit")
             res: Result = deposit(wallet)
             if res.is_success:
                 print(res.message)
-                history_list.append(History(OperationType.DEPOSIT, wallet))
+                history_list.append(History(OperationType.DEPOSIT, wallet.sold))
             else:
                 print(res.message)
         elif choice == 3:
@@ -37,7 +37,7 @@ def run():
             res: Result = withdrawal(wallet)
             if res.is_success:
                 print(res.message)
-                history_list.append(History(OperationType.WITHDRAW, wallet))
+                history_list.append(History(OperationType.WITHDRAW, wallet.sold))
             else:
                 print(res.message)
         elif choice == 4:

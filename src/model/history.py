@@ -5,10 +5,10 @@ from src.model.wallet import Wallet
 
 
 class History:
-    def __init__(self, operation: OperationType, wallet: Wallet):
+    def __init__(self, operation: OperationType, wallet_sold: int):
         self.__timestamp: datetime = datetime.now()
         self.__operation: OperationType = operation
-        self.__wallet: Wallet = wallet
+        self.__wallet: Wallet = Wallet(wallet_sold)
 
     @property
     def timestamp(self) -> datetime:
