@@ -1,6 +1,5 @@
 package app;
 
-import model.History;
 import model.Note;
 import model.Wallet;
 import view.BarView;
@@ -14,7 +13,6 @@ public class WalletApp {
     public static void run () {
         Scanner sc = new Scanner(System.in);
         Wallet wallet = new Wallet();
-        List<History> historyList = new ArrayList<>();
         List<Note> noteList = new ArrayList<>();
 
         System.out.println("Welcome");
@@ -30,7 +28,7 @@ public class WalletApp {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    MoneyApp.run(wallet, historyList, sc);
+                    MoneyApp.run(wallet.getMoney(), sc);
                     break;
                 case 2:
                     NoteApp.run(noteList, sc);
@@ -38,6 +36,7 @@ public class WalletApp {
                 case 3:
                     conditionRunning = false;
                     System.out.println("Bye");
+                    sc.close();
                     break;
                 default:
                     System.out.println("RETRY");

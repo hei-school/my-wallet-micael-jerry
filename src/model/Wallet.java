@@ -1,21 +1,17 @@
 package model;
 
 public class Wallet {
-    private double sold;
+    private Money money;
 
     public Wallet() {
-        this.sold = 0;
+        this.money = new Money();
     }
 
-    public Wallet(double sold) {
-        this.sold = sold;
+    public Money getMoney() {
+        return money;
     }
 
-    public double getSold() {
-        return sold;
-    }
-
-    public void setSold(double sold) {
-        this.sold = sold;
+    public void setMoney(Money money) {
+        this.money = money;
     }
 }

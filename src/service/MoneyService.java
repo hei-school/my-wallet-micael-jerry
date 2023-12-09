@@ -1,18 +1,18 @@
 package service;
 
-import model.Wallet;
+import model.Money;
 
 import java.util.Scanner;
 
-public class WalletService {
-    public static void printWallet (Wallet wallet) {
-        System.out.println("Wallet: " + "\n  sold: " + wallet.getSold());
+public class MoneyService {
+    public static void printMoney(Money money) {
+        System.out.println("Money: " + "\n  sold: " + money.getSold());
     }
 
-    public static void deposit(Wallet wallet, Scanner sc) {
+    public static void deposit(Money money, Scanner sc) {
         System.out.println("Money to deposit: ");
         if (sc.hasNextDouble()) {
-            wallet.setSold(wallet.getSold() + sc.nextDouble());
+            money.setSold(money.getSold() + sc.nextDouble());
             System.out.println("Deposit successfully");
         } else {
             sc.next();
@@ -20,18 +20,18 @@ public class WalletService {
         }
     }
 
-    public static void withdrawal (Wallet wallet, Scanner sc) {
+    public static void withdrawal (Money money, Scanner sc) {
         System.out.println("Amount to withdraw: ");
         while (!sc.hasNextInt()) {
             System.out.println("Invalid Input");
             sc.next();
         }
         double amount = sc.nextInt();
-        if (amount > wallet.getSold()) {
+        if (amount > money.getSold()) {
             System.out.println("Insufficient balance");
         }
         else {
-            wallet.setSold(wallet.getSold() - amount);
+            money.setSold(money.getSold() - amount);
             System.out.println("withdrawal successfully");
         }
     }
