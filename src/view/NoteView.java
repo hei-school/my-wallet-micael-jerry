@@ -1,6 +1,5 @@
 package view;
 
-import model.History;
 import model.Note;
 
 import java.util.List;
