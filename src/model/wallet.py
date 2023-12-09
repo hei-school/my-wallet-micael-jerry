@@ -1,11 +1,14 @@
+from src.model.money import Money
+
+
 class Wallet:
-    def __init__(self, sold: int = 0):
-        self.__sold: int = sold
+    def __init__(self):
+        self.__money: Money = Money()
 
     @property
-    def sold(self):
-        return self.__sold
+    def money(self) -> Money:
+        return self.__money
 
-    @sold.setter
-    def sold(self, sold: int):
-        self.__sold = sold
+    @money.setter
+    def money(self, money: Money) -> None:
+        self.__money = money

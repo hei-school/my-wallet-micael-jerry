@@ -1,28 +1,28 @@
+from src.model.money import Money
 from src.model.type.result import Result
-from src.model.wallet import Wallet
 
 
-def print_wallet(wallet: Wallet) -> None:
-    print(f"Wallet:\n  sold: {wallet.sold}")
+def print_money(money: Money) -> None:
+    print(f"money:\n  sold: {money.sold}")
 
 
-def deposit(wallet: Wallet) -> Result:
+def deposit(money: Money) -> Result:
     input_str: str = input("Money to deposit: ")
     try:
         input_int: int = int(input_str)
-        wallet.sold = wallet.sold + input_int
-        return Result(True, "Deposit successfully", wallet)
+        money.sold = money.sold + input_int
+        return Result(True, "Deposit successfully", money)
     except ValueError:
         return Result(False, "Invalid Input - retry", input_str)
 
 
-def withdrawal(wallet: Wallet) -> Result:
+def withdrawal(money: Money) -> Result:
     input_str: str = input("Amount to withdraw: ")
     try:
         input_int: int = int(input_str)
-        if input_int > wallet.sold:
+        if input_int > money.sold:
             return Result(False, "Insufficient balance", input_int)
-        wallet.sold = wallet.sold - input_int
-        return Result(True, "Withdrawal successfully", wallet)
+        money.sold = money.sold - input_int
+        return Result(True, "Withdrawal successfully", money)
     except ValueError:
         return Result(False, "Invalid Input - retry", input_str)

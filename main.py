@@ -1,4 +1,4 @@
-from src.wallet_app import run
+from src.app.wallet_app import run
 
 
 def main():

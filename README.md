@@ -15,14 +15,9 @@ Make sure you have Python installed on your machine. You can download Python fro
    ```bash
    git clone https://github.com/hei-school/cc-d1-my-wallet-micael-jerry.git
    cd cc-d1-my-wallet-micael-jerry
-   git checkout feature/typescript
+   git checkout feature/python
 
-2. **Installing the various dependencies required for typescript to function properly**
-
-   ```bash
-   npm install
-
-3. **Run the main file :**
+2. **Run the main file :**
 
    ```bash
    python main.py
