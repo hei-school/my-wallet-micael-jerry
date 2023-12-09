@@ -1,22 +1,19 @@
 package app;
 
-import model.Wallet;
+import model.Document;
+import service.DocumentService;
 import view.BarView;
 import view.MenuView;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class WalletApp {
-    public static void run () {
-        Scanner sc = new Scanner(System.in);
-        Wallet wallet = new Wallet();
-
-        System.out.println("Welcome");
-
+public class DocumentApp {
+    public static void run(List<Document> documentList, Scanner sc) {
         boolean conditionRunning = true;
         while (conditionRunning) {
-            BarView.bar("Menu");
-            MenuView.printMenu("Money", "Document", "Exit");
+            BarView.bar("Document");
+            MenuView.printMenu("Status", "Add", "Remove", "Exit");
             while (!sc.hasNextInt()) {
                 System.out.println("Please enter a valid number");
                 sc.next();
@@ -24,15 +21,20 @@ public class WalletApp {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    MoneyApp.run(wallet.getMoney(), sc);
+                    BarView.bar("Status");
+                    DocumentService.printDocumentGroupByType(documentList);
                     break;
                 case 2:
-                    DocumentApp.run(wallet.getDocuments(), sc);
+                    BarView.bar("Add");
+                    DocumentService.addDocument(documentList, sc);
                     break;
                 case 3:
+                    BarView.bar("Remove");
+                    DocumentService.removeDocument(documentList, sc);
+                    break;
+                case 4:
                     conditionRunning = false;
                     System.out.println("Bye");
-                    sc.close();
                     break;
                 default:
                     System.out.println("RETRY");
