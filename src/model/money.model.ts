@@ -1,5 +1,5 @@
 export class Money {
-  sold: number;
+  private sold: number;
 
   constructor(sold: number) {
     this.sold = sold;

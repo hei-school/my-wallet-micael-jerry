@@ -1,33 +1,30 @@
-import { Money } from "../model/money.model";
-import { deposit, printMoney, withdrawal } from "../service/money.service";
+import { Document } from "../model/document";
+import { addDocument, printDocumentGroupByType, removeDocument } from "../service/document.service";
 import { myPrompt } from "../util/my.prompt.util";
 import { bar } from "../view/bar.view";
 import { printMenu } from "../view/menu.view";
 
-export const runMoneyApp = async (money: Money) => {
+export const runDocumentApp = async (documentList: Document[]) => {
   let conditionRunning: boolean = true;
   while (conditionRunning) {
-    bar("Money");
-    printMenu("Status", "Deposit", "Withdraw", "Exit");
+    bar("Document");
+    printMenu("Status", "Add", "Remove", "Exit");
     let input = await myPrompt("Choice: ");
     let choice: number = Number(input);
-    while (!choice) {
-      choice = Number(await myPrompt("Please enter a valid number\nChoice: "));
-    }
     switch (choice) {
       case 1:
         bar("Status");
-        printMoney(money);
+        printDocumentGroupByType(documentList);
         break;
       case 2:
-        bar("Deposit");
-        await deposit(money)
+        bar("Add");
+        await addDocument(documentList)
           .then((res) => console.log(res))
           .catch((err) => console.log(err.message));
         break;
       case 3:
-        bar("Withdraw");
-        await withdrawal(money)
+        bar("Remove");
+        await removeDocument(documentList)
           .then((res) => console.log(res))
           .catch((err) => console.log(err.message));
         break;
