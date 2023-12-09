@@ -1,15 +1,17 @@
+import { Money } from "./money.model";
+
 export class Wallet {
-  sold: number;
+  money: Money
 
-  constructor (sold: number) {
-    this.sold = sold;
+  constructor () {
+    this.money = new Money(0);
   }
 
-  getSold () {
-    return this.sold;
+  getMoney () {
+    return this.money;
   }
 
-  setSold (sold: number) {
-    this.sold = sold;
+  setMoney (money: Money) {
+    this.money = money;
   }
 }

@@ -1,3 +1,7 @@
-import { run } from "./wallet.app";
+import { run } from "./app/wallet.app";
 
-run();
+const app = () => {
+  run();
+}
+
+app();
