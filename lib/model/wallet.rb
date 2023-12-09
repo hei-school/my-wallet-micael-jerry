@@ -1,13 +1,15 @@
+require_relative './money'
+
 class Wallet
-  def initialize(sold = 0)
-    @sold = sold
+  def initialize
+    @money = Money.new
   end
 
-  def sold
-    @sold
+  def money
+    @money
   end
 
-  def sold=(new_sold)
-    @sold = new_sold
+  def money=(new_money)
+    @money = new_money
   end
 end

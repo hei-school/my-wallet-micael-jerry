@@ -1,4 +1,4 @@
-require_relative '../lib/wallet_app'
+require_relative '../lib/app/wallet_app.rb'
 
 def main
   run

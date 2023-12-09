@@ -1,35 +1,35 @@
 require_relative '../model/types/result'
-require_relative '../model/wallet'
+require_relative '../model/money'
 
-def print_wallet(wallet)
-  puts "Wallet:"
-  puts "  sold: #{wallet.sold}"
+def print_money(money)
+  puts "Money:"
+  puts "\tsold: #{money.sold}"
 end
 
-def deposit(wallet)
+def deposit(money)
   print "Money to deposit: "
   input_str = gets.chomp
 
   begin
     input_int = Integer(input_str)
-    wallet.sold = input_int
-    Result.new(true, "Deposit successfully", wallet)
+    money.sold = input_int
+    Result.new(true, "Deposit successfully", money)
   rescue ArgumentError, TypeError
     Result.new(false, "Invalid Input - retry", input_str)
   end
 end
 
-def withdrawal(wallet)
+def withdrawal(money)
   print "Amount to withdraw: "
   input_str = gets.chomp
 
   begin
     input_int = Integer(input_str)
-    if input_int > wallet.sold
+    if input_int > money.sold
       Result.new(false, "Insufficient balance", input_int)
     else
-      wallet.sold -= input_int
-      Result.new(true, "Withdrawal successfully", wallet)
+      money.sold -= input_int
+      Result.new(true, "Withdrawal successfully", money)
     end
   rescue ArgumentError, TypeError
     Result.new(false, "Invalid Input - retry", input_str)
