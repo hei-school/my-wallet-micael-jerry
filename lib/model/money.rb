@@ -3,11 +3,5 @@ class Money
     @sold = sold
   end
 
-  def sold
-    @sold
-  end
-
-  def sold=(new_sold)
-    @sold = new_sold
-  end
+  attr_accessor :sold
 end
